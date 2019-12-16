@@ -25,7 +25,7 @@
   
   
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1576430482000">
+  <link rel="stylesheet" href="/css/style.css?v=1576521143289">
 <meta name="generator" content="Hexo 4.1.1"></head>
 
 <body class="mdui-drawer-body-left">
@@ -49,8 +49,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>2</div>
-        <div><span>标签</span>1</div>
+        <div><span>文章</span>3</div>
+        <div><span>标签</span>2</div>
         <div><span>分类</span>0</div>
     </div>
     <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -97,7 +97,7 @@
   <div class="nexmoe-widget-wrap">
     <h3 class="nexmoe-widget-title">标签云</h3>
     <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/BT/" style="font-size: 10px;">BT</a>
+      <a href="/tags/BT/" style="font-size: 10px;">BT</a> <a href="/tags/%E5%AE%9D%E5%A1%94-Nextcloud/" style="font-size: 10px;">宝塔 Nextcloud</a>
     </div>
     
   </div>
@@ -126,10 +126,111 @@
         <section class="nexmoe-posts" id="brand-waterfall">
     
     <div class="nexmoe-post">
+        <a href="/2019/12/17/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E9%83%A8%E7%BD%B2NextCloud%E5%B9%B6%E4%BF%AE%E5%A4%8D%E9%97%AE%E9%A2%98/">
+            <div class="nexmoe-post-cover mdui-ripple"> 
+                
+                <img src="![](https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217022744216228.png)" alt="宝塔面板部署NextCloud并修复问题">
+                
+                <h1>宝塔面板部署NextCloud并修复问题</h1>
+            </div>
+        </a>
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年12月17日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -link" href="/tags/%E5%AE%9D%E5%A1%94-Nextcloud/" rel="tag">宝塔 Nextcloud</a>
+            
+        </div>
+        <article>
+            
+            <h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><p>NextCloud云盘程序，一个高自由度、高扩展性、免费的云盘程序！</p>
+<p>教程仍然有许多不完善的地方，后续慢慢补齐！也同时欢迎大家补充问题！</p>
+<h2 id="环境要求："><a href="#环境要求：" class="headerlink" title="环境要求："></a>环境要求：</h2><p>服务器系统：Ubuntu 18.04LTS 64位</p>
+<p>环境：安装LNMP / PHP 7.0+  / MySQL 5.5+</p>
+<p>推荐使用PHP7.2版本，宝塔版的PHP7.3的zip模块有bug</p>
+<p>注意事项：MySQL5.5 建议安装内存小于1GB的；MySQL 5.6 建议安装内存大于1GB；MySQL 5.7 建议安装内存大于2GB！</p>
+<p>nextcloud有两种安装方式，一种是源码上传，一种是php页面自动安装。</p>
+<p>源码上传到网站目录后打开网页就有最新版的nextcloud可以配置。</p>
+<p>自动安装的则是16.0.3版本的nextcloud，不过搭建完毕后可以自行升级！不过更新又有坑需要填，请看我下一篇文章。</p>
+<p>两种安装方式各分千秋，源码安装检测出来的安全问题可能会多一点，而自动安装虽然问题会少一两条但是版本比较旧，请各位自己抉择。</p>
+<p>如果配置过CloudFlare的SSL证书的用户请注意：新开站点必须开启SSL证书才可以访问！把以前的证书和密钥复制进去即可！</p>
+<p>本教程搭建环境为：LNMP / MySQL 8 / PHP 7.2 (其他是宝塔默认选项)</p>
+<h2 id="以下是源码安装方法："><a href="#以下是源码安装方法：" class="headerlink" title="以下是源码安装方法："></a>以下是源码安装方法：</h2><h3 id="上传NextCloud源码："><a href="#上传NextCloud源码：" class="headerlink" title="上传NextCloud源码："></a>上传NextCloud源码：</h3><p>官网下载地址：<a href="https://nextcloud.com/install/#instructions-server" target="_blank" rel="noopener">nextcloud</a></p>
+<p>1.登陆宝塔，点击–&gt;网站–&gt;添加网站–&gt;填写相关信息–&gt;提交–&gt;完成</p>
+<p>2.点击–&gt;文件–&gt;进去自己刚刚创建的站点目录下–&gt;删除里面的全部文件–&gt;上传刚刚下载的源码–&gt;解压–&gt;此时会在此目录新出来一个文件夹–&gt;更改权限为www用户组–&gt;完成</p>
+<p>3.点击–&gt;网站–&gt;选择刚刚创建的网站–&gt;设置–&gt;网站目录–&gt;网站目录选择刚刚解压出来源码的根目录–&gt;保存–&gt;完成</p>
+<p>4.此时就可以访问刚刚所创建的站点了，输入自己配置的域名即可打开！</p>
+<p>5.打开程序，程序要求设置一个账号和密码（自己设置一个），然后点击–&gt;创建数据库–&gt;选择有MySQL的选项–&gt;输入刚刚宝塔里创建数据库的表、用户名和密码–&gt;完成</p>
+<p>6.此时即可访问NextCloud了！</p>
+<h3 id="配置Nextcloud程序："><a href="#配置Nextcloud程序：" class="headerlink" title="配置Nextcloud程序："></a>配置Nextcloud程序：</h3><h4 id="1-检测问题"><a href="#1-检测问题" class="headerlink" title="1.检测问题"></a>1.检测问题</h4><p>点击–&gt;设置（齿轮）–&gt;概览–&gt;耐心等待几分钟，程序自动会列出所有问题的–&gt;完成</p>
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191216232803230182.png" alt=""></p>
+<h4 id="2-安装扩展"><a href="#2-安装扩展" class="headerlink" title="2.安装扩展"></a>2.安装扩展</h4><p>先打开宝塔面板，打开–&gt;软件管理–&gt;PHP 7.2（选择自己所用的版本）–&gt;设置–&gt;安装扩展–&gt;安装以下插件：</p>
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217001543592542.png" alt=""></p>
+<h4 id="3-PHP内存限制低于建议值512MB"><a href="#3-PHP内存限制低于建议值512MB" class="headerlink" title="3.PHP内存限制低于建议值512MB"></a>3.PHP内存限制低于建议值512MB</h4><p>问题解决方案：</p>
+<p>点击–&gt;PHP 7.2–&gt;设置–&gt;配置修改–&gt;把memory_limit选项值写为：1024MB（512MB以上即可，512MB也行）–&gt;保存–&gt;完成</p>
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217001410342231.png" alt=""></p>
+<h4 id="4-PHP的OPcache模块未载入"><a href="#4-PHP的OPcache模块未载入" class="headerlink" title="4.PHP的OPcache模块未载入"></a>4.PHP的OPcache模块未载入</h4><p>进入–&gt;配置文件–&gt;找到1904行代码附近–&gt;把默认配置删除–&gt;复制如下代码进去–&gt;保存–&gt;完成</p>
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217001758490688.png" alt=""></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">opcache.enable=<span class="number">1</span></span><br><span class="line">opcache.enable_cli=<span class="number">1</span></span><br><span class="line">opcache.interned_strings_buffer=<span class="number">8</span></span><br><span class="line">opcache.max_accelerated_files=<span class="number">10000</span></span><br><span class="line">opcache.memory_consumption=<span class="number">128</span></span><br><span class="line">opcache.save_comments=<span class="number">1</span></span><br><span class="line">opcache.revalidate_freq=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>配置完成PHP后一定要点击–&gt;服务–&gt;重载配置–&gt;重启–&gt;完成</p>
+<p>此时刷新NextCloud界面会少一些错误!</p>
+<p>安装完成后有些错需要修复</p>
+<h4 id="5-getenv-”PATH-”-这个问题的解决方案："><a href="#5-getenv-”PATH-”-这个问题的解决方案：" class="headerlink" title="5.getenv(\”PATH\”) 这个问题的解决方案："></a>5.getenv(\”PATH\”) 这个问题的解决方案：</h4><p>点击–&gt;软件管理–&gt;PHP 7.2–&gt;服务–&gt;停止–&gt;完成</p>
+<p>点击–&gt;文件–&gt;进入如下目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;www&#x2F;server&#x2F;php&#x2F;73&#x2F;etc&#x2F;php-fpm.conf</span><br></pre></td></tr></table></figure>
+
+<p>打开–&gt;php-fpm.conf–&gt;在最后一行添加如下代码：</p>
+<p><code>env[PATH] = /usr/local/bin:/usr/bin:/bin:/usr/local/php/bin</code></p>
+<p>然后点击–&gt;保存–&gt;软件管理–&gt;PHP7.2–&gt;服务–&gt;重启–&gt;完成</p>
+<h4 id="6-您的数据目录和文件可以从互联网直接访问。-htaccess文件不起作用。"><a href="#6-您的数据目录和文件可以从互联网直接访问。-htaccess文件不起作用。" class="headerlink" title="6.您的数据目录和文件可以从互联网直接访问。.htaccess文件不起作用。"></a>6.您的数据目录和文件可以从互联网直接访问。.htaccess文件不起作用。</h4><p>打开–&gt;网站–&gt;设置–&gt;伪静态–&gt;把以下代码复制进去–&gt;保存–&gt;完成</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location</span><br><span class="line">~ ^/(data|config|.ht|db_structure.xml|README) &#123;</span><br><span class="line">deny all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="7-内存缓存未配置（两种解决方案）"><a href="#7-内存缓存未配置（两种解决方案）" class="headerlink" title="7.内存缓存未配置（两种解决方案）"></a>7.内存缓存未配置（两种解决方案）</h4><h5 id="方案一：配置Redis（低内存用户）"><a href="#方案一：配置Redis（低内存用户）" class="headerlink" title="方案一：配置Redis（低内存用户）"></a>方案一：配置Redis（低内存用户）</h5><p>打开以下文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;www&#x2F;wwwroot&#x2F;sky.hkjbase.com&#x2F;nextcloud&#x2F;config&#x2F;config.php</span><br></pre></td></tr></table></figure>
+
+<p>在倒数第二行添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">'memcache.local' =&gt; '\OC\Memcache\Redis',</span><br><span class="line">'memcache.locking' =&gt; '\OC\Memcache\Redis',</span><br><span class="line">'redis' =&gt; array(</span><br><span class="line">   'host' =&gt; 'localhost',</span><br><span class="line">   'port' =&gt; 6379,</span><br><span class="line">    ),</span><br></pre></td></tr></table></figure>
+
+<p>完成后点击保存即可。</p>
+<h5 id="方案二：配置APCu（高内存用户）"><a href="#方案二：配置APCu（高内存用户）" class="headerlink" title="方案二：配置APCu（高内存用户）"></a>方案二：配置APCu（高内存用户）</h5><p>打开以下文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;www&#x2F;wwwroot&#x2F;sky.hkjbase.com&#x2F;nextcloud&#x2F;config&#x2F;config.php</span><br></pre></td></tr></table></figure>
+
+<p>在倒数第二行添加如下代码：</p>
+<p><code>&#39;memcache.local&#39; =&gt; &#39;\OC\Memcache\APCu&#39;</code></p>
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217005350295211.png" alt=""></p>
+<h4 id="8-您的网页服务器未正确设置以解析-well-known-……………-两个错的解决方案）"><a href="#8-您的网页服务器未正确设置以解析-well-known-……………-两个错的解决方案）" class="headerlink" title="8.您的网页服务器未正确设置以解析/.well-known/……………(两个错的解决方案）"></a>8.您的网页服务器未正确设置以解析/.well-known/……………(两个错的解决方案）</h4><p>点击–&gt;网站–&gt;设置–&gt;配置文件–&gt;如图所示加入以下代码即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewrite &#x2F;.well-known&#x2F;carddav &#x2F;remote.php&#x2F;dav permanent;</span><br><span class="line">rewrite &#x2F;.well-known&#x2F;caldav &#x2F;remote.php&#x2F;dav permanent;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217013116608006.png" alt=""></p>
+<h4 id="9-一些文件没有通过完整性检查。"><a href="#9-一些文件没有通过完整性检查。" class="headerlink" title="9.一些文件没有通过完整性检查。"></a>9.一些文件没有通过完整性检查。</h4><p>把网站目录的404文件删除，然后更改.user.ini为以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mbstring.func_overload&#x3D;0</span><br><span class="line">always_populate_raw_post_data&#x3D;-1</span><br><span class="line">default_charset&#x3D;&#39;UTF-8&#39;</span><br><span class="line">output_buffering&#x3D;0</span><br></pre></td></tr></table></figure>
+
+<p>完成操作后点击重新扫描。</p>
+<h4 id="10-通过-HTTP-访问网站不安全。强烈建议您将服务器设置成-HTTPS-协议"><a href="#10-通过-HTTP-访问网站不安全。强烈建议您将服务器设置成-HTTPS-协议" class="headerlink" title="10.通过 HTTP 访问网站不安全。强烈建议您将服务器设置成 HTTPS 协议"></a>10.通过 HTTP 访问网站不安全。强烈建议您将服务器设置成 HTTPS 协议</h4><p>这里我使用的是cloudflare的ssl，服务器在国内的建议使用宝塔自己的ssl，我使用cloudflare是因为我的服务器在国外，回程很差，使用了cloudflare后效果很好，所以干脆ssl也使用cloudflare。</p>
+<h5 id="①先去cloudflare选择全程ssl（默认半程）"><a href="#①先去cloudflare选择全程ssl（默认半程）" class="headerlink" title="①先去cloudflare选择全程ssl（默认半程）"></a>①先去cloudflare选择全程ssl（默认半程）</h5><p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217013204597181.png" alt=""></p>
+<h5 id="②然后创建证书"><a href="#②然后创建证书" class="headerlink" title="②然后创建证书"></a>②然后创建证书</h5><p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217013228493617.png" alt=""></p>
+<h5 id="③所有选项默认的即可，或者你看看是否需要更改什么。"><a href="#③所有选项默认的即可，或者你看看是否需要更改什么。" class="headerlink" title="③所有选项默认的即可，或者你看看是否需要更改什么。"></a>③所有选项默认的即可，或者你看看是否需要更改什么。</h5><p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217014028810814.png" alt=""></p>
+<h5 id="④将Origin-Certificate和Private-key-分别粘贴至证书-PEM格式-和密钥-KEY"><a href="#④将Origin-Certificate和Private-key-分别粘贴至证书-PEM格式-和密钥-KEY" class="headerlink" title="④将Origin Certificate和Private key 分别粘贴至证书(PEM格式)和密钥(KEY)"></a>④将<strong>Origin Certificate</strong>和<strong>Private key</strong> 分别粘贴至<strong>证书(PEM格式)</strong>和<strong>密钥(KEY)</strong></h5><p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217014113926559.png" alt=""></p>
+<h5 id="⑤勾选强制HTTPS"><a href="#⑤勾选强制HTTPS" class="headerlink" title="⑤勾选强制HTTPS"></a>⑤勾选强制HTTPS</h5><h5 id="⑥刷新，问题解决"><a href="#⑥刷新，问题解决" class="headerlink" title="⑥刷新，问题解决"></a>⑥刷新，问题解决</h5><h4 id="11-HTTP的请求头-“Strict-Transport-Security”-未设置为至少-“15552000”-秒。"><a href="#11-HTTP的请求头-“Strict-Transport-Security”-未设置为至少-“15552000”-秒。" class="headerlink" title="11.HTTP的请求头 “Strict-Transport-Security” 未设置为至少 “15552000” 秒。"></a>11.HTTP的请求头 “Strict-Transport-Security” 未设置为至少 “15552000” 秒。</h4><p>这是在解决完HTTPS的问题后冒出来的问题</p>
+<p>解决方法还是修改nextcloud绑定的网站配置文件，添加一行header信息</p>
+<p><code>add_header Strict-Transport-Security &quot;max-age=63072000;&quot;;</code></p>
+<hr>
+<h3 id="至此，所有检查已通过"><a href="#至此，所有检查已通过" class="headerlink" title="至此，所有检查已通过"></a>至此，所有检查已通过</h3><p><img src="https://raw.githubusercontent.com/AdiEcho/pic/master/images/image_20191217014540744826.png" alt=""></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
         <a href="/2019/12/16/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%E5%A5%97%E4%B8%8Acloudflare/">
             <div class="nexmoe-post-cover mdui-ripple"> 
                 
-                <img src="1.jpg" alt="宝塔面板绑定域名套上cloudflare">
+                <img src="DSCF0003.jpg" alt="宝塔面板绑定域名套上cloudflare">
                 
                 <h1>宝塔面板绑定域名套上cloudflare</h1>
             </div>
@@ -219,7 +320,7 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="/js/app.js?v=1576430482007"></script>
+<script src="/js/app.js?v=1576521143292"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
 
 
